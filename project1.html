@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentic Portraits - BLUEPRINTS Media</title>
+    <meta name="description" content="Capturing the essence of Kenyan youth through authentic portrait photography by BLUEPRINTS Media.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="interactions.css">
+    <link rel="stylesheet" href="mobile-states.css">
+    <link rel="stylesheet" href="project-styles.css">
+    
+    <!-- Accessibility -->
+    <meta name="theme-color" content="#1A90FF">
+</head>
+<body class="dark-mode-transition">
+    <!-- Global state management checkboxes -->
+    <input type="checkbox" id="navToggle" class="nav-toggle" aria-hidden="true">
+    <input type="checkbox" id="darkToggle" class="dark-toggle" aria-hidden="true">
+    
+    <!-- Navigation (same as main page) -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="BLUEPRINTS Media Logo" class="logo-img">
+                    <span class="logo-text">BLUEPRINTS</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="index.html#portfolio" class="nav-link">← Back to Portfolio</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                
+                <label for="darkToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <span class="toggle-icon">🌙</span>
+                </label>
+            </div>
+            
+            <label for="navToggle" class="nav-hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+    </nav>
+
+    <!-- Project Hero Section -->
+    <main>
+        <section class="project-hero">
+            <div class="project-hero-image">
+                <img src="portrait-dramatic.jpg" alt="Authentic Portraits Hero Image" loading="eager">
+                <div class="project-hero-overlay">
+                    <h1 class="project-title animate-slide-in">Authentic Portraits</h1>
+                    <p class="project-subtitle animate-slide-in-delay">Capturing the essence of Kenyan youth</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Details -->
+        <section class="project-details">
+            <div class="container">
+                <div class="project-content">
+                    <div class="project-info">
+                        <div class="project-narrative">
+                            <h2>The Story</h2>
+                            <p class="narrative-text">
+                                This portrait series explores the authentic spirit of Kenya's young generation. Each photograph captures not just a face, but a story, a dream, and the unwavering ambition that defines our youth. Shot in natural lighting around Eldoret, these portraits showcase the beauty, strength, and diversity of our community.
+                            </p>
+                            <p class="narrative-text">
+                                Working with local talent, we created a safe space where personalities could shine through, resulting in images that speak to the soul and celebrate individuality. Each portrait is a testament to the belief that ambition truly is priceless.
+                            </p>
+                        </div>
+                        
+                        <div class="project-specs">
+                            <h3>Project Details</h3>
+                            <div class="spec-grid">
+                                <div class="spec-item">
+                                    <strong>Category:</strong>
+                                    <span>Portrait Photography</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Location:</strong>
+                                    <span>Eldoret, Kenya</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Duration:</strong>
+                                    <span>2 weeks</span>
+                                </div>
+                                <div class="spec-item">
+                                    <strong>Equipment:</strong>
+                                    <span>Canon EOS R5, 85mm f/1.4</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Credits Section -->
+                        <div class="project-credits">
+                            <h3>Credits</h3>
+                            <div class="credits-accordion">
+                                <details class="credit-group">
+                                    <summary class="credit-header">Photography Team</summary>
+                                    <div class="credit-content">
+                                        <div class="credit-person">
+                                            <strong>Lead Photographer:</strong> John Doe
+                                        </div>
+                                        <div class="credit-person">
+                                            <strong>Assistant:</strong> Jane Smith
+                                        </div>
+                                    </div>
+                                </details>
+                                
+                                <details class="credit-group">
+                                    <summary class="credit-header">Models</summary>
+                                    <div class="credit-content">
+                                        <div class="credit-person">Sarah K.</div>
+                                        <div class="credit-person">Michael O.</div>
+                                        <div class="credit-person">Grace M.</div>
+                                        <div class="credit-person">David N.</div>
+                                    </div>
+                                </details>
+                                
+                                <details class="credit-group">
+                                    <summary class="credit-header">Production</summary>
+                                    <div class="credit-content">
+                                        <div class="credit-person">
+                                            <strong>Creative Director:</strong> BLUEPRINTS Team
+                                        </div>
+                                        <div class="credit-person">
+                                            <strong>Styling:</strong> Local Artists Collective
+                                        </div>
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Gallery -->
+                    <div class="project-gallery">
+                        <h2>Gallery</h2>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="portrait-dramatic.jpg" alt="Dramatic portrait with professional lighting" loading="lazy">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="hero-portrait.jpg" alt="Authentic portrait session" loading="lazy">
+                            </div>
+                            <div class="gallery-item large">
+                                <img src="portrait-authentic.jpg" alt="Street photography portrait" loading="lazy">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="fan-portrait.jpg" alt="Event portrait photography" loading="lazy">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="creative-session.jpg" alt="Behind the scenes portrait session" loading="lazy">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="stadium-scene.jpg" alt="Environmental portrait at stadium" loading="lazy">
+                            </div>
+                            <div class="gallery-item wide">
+                                <img src="portrait-dramatic.jpg" alt="Wide dramatic portrait composition" loading="lazy">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="hero-portrait.jpg" alt="Final portrait from session" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Behind the Scenes -->
+        <section class="behind-scenes">
+            <div class="container">
+                <h2 class="section-title">Behind the Scenes</h2>
+                <div class="bts-content">
+                    <div class="bts-video">
+                        <video controls preload="metadata" poster="creative-session.jpg">
+                            <source src="hero-video.mp4" type="video/mp4">
+                            <div class="video-placeholder">
+                                <span class="play-icon">▶</span>
+                                <p>Watch how we created these authentic portraits</p>
+                            </div>
+                        </video>
+                    </div>
+                    <div class="bts-text">
+                        <h3>Creating Magic</h3>
+                        <p>Every great portrait starts with connection. Our process involves getting to know each model, understanding their story, and creating an environment where they feel comfortable expressing their true selves.</p>
+                        <p>Using natural light and minimal equipment, we focus on capturing genuine emotions and authentic moments that tell the real story of Kenya's youth.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Projects -->
+        <section class="related-projects">
+            <div class="container">
+                <h2 class="section-title">More Like This</h2>
+                <div class="related-grid">
+                    <a href="project2.html" class="related-item">
+                        <img src="creative-session.jpg" alt="Creative Sessions Documentation">
+                        <div class="related-overlay">
+                            <h4>Creative Sessions</h4>
+                            <p>Behind the Scenes Photography</p>
+                        </div>
+                    </a>
+                    <a href="project3.html" class="related-item">
+                        <img src="stadium-scene.jpg" alt="Event Photography">
+                        <div class="related-overlay">
+                            <h4>Event Coverage</h4>
+                            <p>Stadium & Event Photography</p>
+                        </div>
+                    </a>
+                    <a href="project5.html" class="related-item">
+                        <img src="portrait-dramatic.jpg" alt="Dramatic Portraits">
+                        <div class="related-overlay">
+                            <h4>Dramatic Portraits</h4>
+                            <p>Professional Portrait Photography</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="project-cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Tell Your Story?</h2>
+                    <p>Let's create something amazing together. Every project is a chance to capture magic.</p>
+                    <a href="index.html#contact" class="cta-button">Start Your Project</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="blueprints-logo.png" alt="BLUEPRINTS Media">
+                    <span>BLUEPRINTS</span>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#portfolio">Portfolio</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="YouTube">📹</a>
+                    <a href="#" aria-label="TikTok">🎵</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 BLUEPRINTS Media. Ambition is Priceless.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

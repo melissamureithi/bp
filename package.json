@@ -1,0 +1,57 @@
+{
+  "name": "blueprints-media-website",
+  "version": "1.0.0",
+  "description": "Creative Gen Z-friendly website for BLUEPRINTS Media - Photography and Video Production Company",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=/index.html",
+    "validate": "npx html-validate *.html && npx stylelint **/*.css",
+    "optimize": "npx imagemin images/*.{jpg,png} --out-dir=images/optimized",
+    "build": "echo 'Building production version...' && npm run validate",
+    "deploy": "echo 'Ready for deployment - upload all files to your web server'"
+  },
+  "keywords": [
+    "photography",
+    "video-production",
+    "kenya",
+    "eldoret",
+    "gen-z",
+    "creative-agency",
+    "portfolio",
+    "responsive-design",
+    "css-only",
+    "accessibility"
+  ],
+  "author": "BLUEPRINTS Media",
+  "license": "MIT",
+  "homepage": "https://blueprintsmedia.co.ke",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blueprintsmedia/website.git"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2",
+    "html-validate": "^8.7.4",
+    "stylelint": "^15.11.0",
+    "imagemin": "^8.0.1",
+    "imagemin-cli": "^8.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "config": {
+    "primary_color": "#1A90FF",
+    "secondary_color": "#F5C518",
+    "company_name": "BLUEPRINTS Media",
+    "tagline": "Ambition is Priceless",
+    "location": "Eldoret, Kenya"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

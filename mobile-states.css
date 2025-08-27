@@ -1,0 +1,587 @@
+/* BLUEPRINTS Media - Mobile & State Management */
+/* Pure CSS solutions for interactive states without JavaScript */
+
+/* Mobile Navigation State Management */
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle:checked ~ .nav-menu {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-toggle:checked ~ .nav-hamburger span:nth-child(1) {
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.nav-toggle:checked ~ .nav-hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle:checked ~ .nav-hamburger span:nth-child(3) {
+  transform: rotate(45deg) translate(-6px, -6px);
+}
+
+/* Dark Mode Toggle State */
+.dark-toggle {
+  display: none;
+}
+
+/* Dark mode applied to all page content - EXCLUDE ALL TEXT from getting solid backgrounds */
+.dark-toggle:checked ~ *:not(.hero-section):not(.hero-video-container):not(.hero-video):not(.hero-content):not(.hero-tagline):not(.hero-subtitle):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(p):not(span),
+.dark-toggle:checked ~ nav,
+.dark-toggle:checked ~ main *:not(.hero-section):not(.hero-video-container):not(.hero-video):not(.hero-content):not(.hero-tagline):not(.hero-subtitle):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(p):not(span),
+.dark-toggle:checked ~ nav *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(p):not(span),
+.dark-toggle:checked ~ .modal-overlay,
+.dark-toggle:checked ~ .modal-overlay *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(p):not(span),
+.dark-toggle:checked ~ .toast,
+.dark-toggle:checked ~ .share-container,
+.dark-toggle:checked ~ .floating-contact {
+  --bg-primary: var(--charcoal-gray) !important;
+  --bg-secondary: #2A2A2A !important;
+  --text-primary: var(--bright-white) !important;
+  --text-secondary: #E0E0E0 !important;
+  --border-color: #444444 !important;
+}
+
+/* Apply dark background ONLY to containers, NEVER to text */
+.dark-toggle:checked ~ nav,
+.dark-toggle:checked ~ main section,
+.dark-toggle:checked ~ main .container {
+  background-color: var(--charcoal-gray) !important;
+}
+
+/* Force dark mode on body - alternative approach */
+.dark-toggle:checked {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+}
+
+.dark-toggle:checked ~ body,
+body .dark-toggle:checked {
+  background-color: var(--charcoal-gray) !important;
+  color: var(--bright-white) !important;
+}
+
+/* ALL TEXT in dark mode - same as hero section (clean, no backgrounds) */
+.dark-toggle:checked ~ * h1,
+.dark-toggle:checked ~ * h2,
+.dark-toggle:checked ~ * h3,
+.dark-toggle:checked ~ * h4,
+.dark-toggle:checked ~ * h5,
+.dark-toggle:checked ~ * h6,
+.dark-toggle:checked ~ * p,
+.dark-toggle:checked ~ * span,
+.dark-toggle:checked ~ * .section-title,
+.dark-toggle:checked ~ * .card-title,
+.dark-toggle:checked ~ * .card-caption,
+.dark-toggle:checked ~ * .grid-title,
+.dark-toggle:checked ~ * .about-description,
+.dark-toggle:checked ~ * .project-title,
+.dark-toggle:checked ~ * .project-description,
+.dark-toggle:checked ~ * .unlock-text h3,
+.dark-toggle:checked ~ * .unlock-description,
+.dark-toggle:checked ~ * .hero-tagline,
+.dark-toggle:checked ~ * .hero-subtitle,
+.dark-toggle:checked ~ * .nav-link,
+.dark-toggle:checked ~ * .dropdown-link,
+.dark-toggle:checked ~ * .logo-text {
+  color: var(--bright-white) !important;
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Dark mode navigation - clean backgrounds only where needed */
+.dark-toggle:checked ~ nav {
+  background-color: var(--charcoal-gray) !important;
+}
+
+.dark-toggle:checked ~ nav .nav-container,
+.dark-toggle:checked ~ nav .nav-link,
+.dark-toggle:checked ~ nav .dropdown-link,
+.dark-toggle:checked ~ nav .logo-text {
+  background: none !important;
+  background-color: transparent !important;
+  color: var(--bright-white) !important;
+}
+
+/* Dark mode sections - only main containers get dark backgrounds */
+.dark-toggle:checked ~ * .about-section,
+.dark-toggle:checked ~ * .social-section,
+.dark-toggle:checked ~ * .unlock-section,
+.dark-toggle:checked ~ * .featured-section,
+.dark-toggle:checked ~ * .categories-section {
+  background-color: var(--charcoal-gray) !important;
+}
+
+/* Cards get subtle dark background but text stays clean */
+.dark-toggle:checked ~ * .project-card,
+.dark-toggle:checked ~ * .grid-item {
+  background-color: rgba(42, 42, 42, 0.8) !important;
+}
+
+/* Card text elements stay clean */
+.dark-toggle:checked ~ * .project-card h3,
+.dark-toggle:checked ~ * .project-card p,
+.dark-toggle:checked ~ * .grid-item h4,
+.dark-toggle:checked ~ * .card-title,
+.dark-toggle:checked ~ * .card-caption,
+.dark-toggle:checked ~ * .grid-title {
+  background: none !important;
+  background-color: transparent !important;
+  color: var(--bright-white) !important;
+}
+
+/* Preserve hero video visibility in dark mode */
+.dark-toggle:checked ~ * .hero-section,
+.dark-toggle:checked ~ * .hero-video-container,
+.dark-toggle:checked ~ * .hero-video,
+.dark-toggle:checked ~ * .hero-video-section {
+  background-color: transparent !important;
+  opacity: 1 !important;
+}
+
+/* Keep hero video elements visible */
+.dark-toggle:checked ~ * .hero-video {
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 1 !important;
+}
+
+/* Ensure hero content (text) is visible over video in dark mode */
+.dark-toggle:checked ~ * .hero-content {
+  background: none !important;
+  background-color: transparent !important;
+  z-index: 10 !important;
+}
+
+.dark-toggle:checked ~ * .hero-content .hero-tagline,
+.dark-toggle:checked ~ * .hero-content .hero-subtitle {
+  background: none !important;
+  background-color: transparent !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* FORCE no backgrounds on hero text - override everything */
+.dark-toggle:checked ~ * .hero-tagline,
+.dark-toggle:checked ~ * .hero-subtitle {
+  background: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.dark-toggle:checked ~ * .hero-content .cta-button {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Dark mode overlays and modals - clean text */
+.dark-toggle:checked ~ * .card-overlay,
+.dark-toggle:checked ~ * .grid-overlay,
+.dark-toggle:checked ~ * .modal-content,
+.dark-toggle:checked ~ * .unlock-video {
+  background-color: rgba(42, 42, 42, 0.95) !important;
+}
+
+.dark-toggle:checked ~ * .card-overlay h3,
+.dark-toggle:checked ~ * .card-overlay p,
+.dark-toggle:checked ~ * .grid-overlay h4,
+.dark-toggle:checked ~ * .modal-content h2,
+.dark-toggle:checked ~ * .modal-content p,
+.dark-toggle:checked ~ * .unlock-video h3 {
+  background: none !important;
+  background-color: transparent !important;
+  color: var(--bright-white) !important;
+}
+
+/* Dark mode borders */
+.dark-toggle:checked ~ * .project-card,
+.dark-toggle:checked ~ * .grid-item,
+.dark-toggle:checked ~ * .nav-container,
+.dark-toggle:checked ~ * .modal-content {
+  border-color: #444444 !important;
+}
+
+/* Dark mode toggle icon */
+.dark-toggle:checked ~ nav .dark-mode-toggle .toggle-icon::after {
+  content: "☀️";
+}
+
+/* Simple approach - just like hero section, NO solid backgrounds on any text */
+
+/* Project page CTA section - same clean treatment */
+.dark-toggle:checked ~ * .cta-content h2,
+.dark-toggle:checked ~ * .cta-content p {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Contact Modal State */
+.modal-toggle {
+  display: none;
+}
+
+.modal-toggle:checked ~ .modal-overlay {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-toggle:checked ~ .modal-overlay .modal-content {
+  transform: scale(1);
+}
+
+/* Accordion States */
+.accordion-1:target ~ .accordion-content-1,
+.accordion-2:target ~ .accordion-content-2,
+.accordion-3:target ~ .accordion-content-3 {
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* Filter States using target pseudo-class */
+#filter-all:target ~ .masonry-grid .grid-item {
+  display: block;
+}
+
+#filter-photography:target ~ .masonry-grid .grid-item {
+  display: none;
+}
+
+#filter-photography:target ~ .masonry-grid .grid-item[data-category*="photography"] {
+  display: block;
+}
+
+#filter-video:target ~ .masonry-grid .grid-item {
+  display: none;
+}
+
+#filter-video:target ~ .masonry-grid .grid-item[data-category*="video"] {
+  display: block;
+}
+
+#filter-portraits:target ~ .masonry-grid .grid-item {
+  display: none;
+}
+
+#filter-portraits:target ~ .masonry-grid .grid-item[data-category*="portraits"] {
+  display: block;
+}
+
+#filter-events:target ~ .masonry-grid .grid-item {
+  display: none;
+}
+
+#filter-events:target ~ .masonry-grid .grid-item[data-category*="events"] {
+  display: block;
+}
+
+/* Share Button States */
+.share-toggle-input {
+  display: none;
+}
+
+.share-toggle-input:checked ~ .share-buttons {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* Carousel Navigation using radio buttons */
+.carousel-radio {
+  display: none;
+}
+
+.carousel-slide-1:checked ~ .carousel-container {
+  transform: translateX(0);
+}
+
+.carousel-slide-2:checked ~ .carousel-container {
+  transform: translateX(-370px);
+}
+
+.carousel-slide-3:checked ~ .carousel-container {
+  transform: translateX(-740px);
+}
+
+.carousel-slide-4:checked ~ .carousel-container {
+  transform: translateX(-1110px);
+}
+
+.carousel-slide-5:checked ~ .carousel-container {
+  transform: translateX(-1480px);
+}
+
+/* Carousel Navigation Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.carousel-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--border-color);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.carousel-slide-1:checked ~ .carousel-dots .carousel-dot:nth-child(1),
+.carousel-slide-2:checked ~ .carousel-dots .carousel-dot:nth-child(2),
+.carousel-slide-3:checked ~ .carousel-dots .carousel-dot:nth-child(3),
+.carousel-slide-4:checked ~ .carousel-dots .carousel-dot:nth-child(4),
+.carousel-slide-5:checked ~ .carousel-dots .carousel-dot:nth-child(5) {
+  background: var(--primary-blue);
+}
+
+/* Tab System for Project Categories */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--transition-normal);
+}
+
+.tab-radio:checked ~ .tab-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Progress unlock using CSS counters */
+.unlock-progress {
+  counter-reset: scroll-progress 0;
+}
+
+.unlock-progress::before {
+  counter-increment: scroll-progress 1;
+  content: counter(scroll-progress) "%";
+}
+
+/* Smooth state transitions */
+* {
+  transition: background-color var(--transition-normal),
+              color var(--transition-normal),
+              border-color var(--transition-normal),
+              opacity var(--transition-normal),
+              transform var(--transition-normal);
+}
+
+/* Enhanced mobile touch states */
+@media (max-width: 768px) {
+  /* Better touch targets */
+  .nav-hamburger {
+    padding: var(--spacing-sm);
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .filter-btn {
+    min-height: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  /* Mobile-specific hover states (touch) */
+  .project-card:active,
+  .grid-item:active {
+    transform: scale(0.98);
+  }
+  
+  /* Prevent zoom on input focus */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* High contrast mode enhancements */
+@media (prefers-contrast: high) {
+  .nav-toggle:checked ~ .nav-hamburger span {
+    background: var(--bright-white);
+  }
+  
+  .filter-btn.active {
+    border-width: 3px;
+  }
+  
+  .carousel-dot {
+    border: 2px solid var(--text-primary);
+  }
+}
+
+/* Reduced motion adaptations */
+@media (prefers-reduced-motion: reduce) {
+  .tab-content {
+    transition: opacity 0.1s;
+    transform: none;
+  }
+  
+  .carousel-container {
+    transition: transform 0.1s;
+  }
+  
+  .modal-content {
+    transition: opacity 0.1s;
+    transform: none;
+  }
+}
+
+/* Print state management */
+@media print {
+  .nav-toggle:checked ~ .nav-menu,
+  .modal-toggle:checked ~ .modal-overlay,
+  .share-toggle-input:checked ~ .share-buttons {
+    display: none !important;
+  }
+  
+  /* Show all content in print */
+  .tab-content {
+    display: block !important;
+    opacity: 1 !important;
+  }
+  
+  .grid-item {
+    display: block !important;
+  }
+}
+
+/* Focus management for accessibility */
+.nav-toggle:focus ~ .nav-hamburger,
+.dark-toggle:focus ~ .dark-mode-toggle,
+.modal-toggle:focus ~ .floating-contact {
+  outline: 3px solid var(--vivid-gold);
+  outline-offset: 3px;
+}
+
+/* State indicators */
+.nav-toggle:checked ~ .nav-hamburger::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  background: var(--vivid-gold);
+  border-radius: 50%;
+}
+
+.dark-toggle:checked ~ .dark-mode-toggle::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 6px;
+  height: 6px;
+  background: var(--vivid-gold);
+  border-radius: 50%;
+}
+
+/* Loading state for images */
+img[src=""],
+img[src*="placeholder"] {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  /* Shimmer loading animation disabled to prevent white overlay */
+  /* animation: shimmerLoading 1.5s infinite; */
+}
+
+@keyframes shimmerLoading {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Error states */
+.form-group input:invalid:not(:placeholder-shown) {
+  border-color: var(--coral-red);
+  background-color: rgba(255, 87, 51, 0.1);
+}
+
+.form-group input:invalid:not(:placeholder-shown) + .error-message {
+  display: block;
+  color: var(--coral-red);
+}
+
+/* Success states */
+.form-group input:valid:not(:placeholder-shown) {
+  border-color: var(--primary-blue);
+  background-color: rgba(26, 144, 255, 0.1);
+}
+
+/* Custom radio button styles for carousel */
+.carousel-radio + .carousel-nav-label {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin: 0 var(--spacing-xs);
+}
+
+.carousel-radio:checked + .carousel-nav-label {
+  background: var(--primary-blue);
+  transform: scale(1.2);
+}
+
+.carousel-radio:focus + .carousel-nav-label {
+  outline: 2px solid var(--vivid-gold);
+  outline-offset: 2px;
+}
+
+/* Animation for state changes */
+.state-transition {
+  transition: all var(--transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scroll behavior for anchor links */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navbar */
+}
+
+/* Enhanced focus for keyboard navigation */
+.nav-hamburger:focus,
+.dark-mode-toggle:focus,
+.floating-contact:focus {
+  box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.5);
+  border-radius: var(--border-radius);
+}
+
+/* Visual feedback for interactions */
+.interactive-element:active {
+  transform: scale(0.98);
+}
+
+.interactive-element:hover {
+  transform: translateY(-2px);
+}
+
+/* Exclude CTA content from dark backgrounds - same as hero */
+#darkToggle:checked ~ * .cta-content h2,
+#darkToggle:checked ~ * .cta-content p {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}

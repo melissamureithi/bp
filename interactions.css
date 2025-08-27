@@ -1,0 +1,491 @@
+/* BLUEPRINTS Media - Pure CSS Interactive Features */
+/* This file contains CSS-only interactions for a fully functional website */
+
+/* Smooth scroll progress tracking using CSS custom properties - DISABLED */
+.progress-bar {
+  display: none !important;
+  /* width: 0%;
+  background: linear-gradient(90deg, var(--primary-blue), var(--vivid-gold));
+  animation: progressFill 2s ease-out forwards; */
+}
+
+@keyframes progressFill {
+  to { width: 30%; }
+}
+
+/* Mobile Navigation Toggle */
+.nav-hamburger {
+  z-index: calc(var(--z-sticky) + 1);
+}
+
+.nav-hamburger input[type="checkbox"] {
+  display: none;
+}
+
+/* Hamburger animation */
+.nav-hamburger.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.nav-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-hamburger.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-6px, -6px);
+}
+
+/* Carousel Auto-scroll using CSS animation */
+.carousel-container {
+  animation: carouselScroll 20s infinite linear;
+}
+
+.carousel-container:hover {
+  animation-play-state: paused;
+}
+
+@keyframes carouselScroll {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-370px); }
+  40% { transform: translateX(-740px); }
+  60% { transform: translateX(-1110px); }
+  80% { transform: translateX(-1480px); }
+  100% { transform: translateX(0); }
+}
+
+/* Filter functionality using CSS target selectors */
+.filter-btn:target ~ .masonry-grid .grid-item {
+  display: none;
+}
+
+.filter-btn:target ~ .masonry-grid .grid-item[data-category*="photography"] {
+  display: block;
+}
+
+/* Dark mode toggle using CSS checkbox hack */
+.dark-mode-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.dark-mode-toggle input[type="checkbox"]:checked ~ body {
+  --bg-primary: var(--charcoal-gray);
+  --bg-secondary: #2A2A2A;
+  --text-primary: var(--bright-white);
+  --text-secondary: #E0E0E0;
+  --border-color: #444444;
+}
+
+/* Contact modal toggle */
+.modal-overlay {
+  pointer-events: none;
+}
+
+.modal-overlay:target {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-overlay:target .modal-content {
+  transform: scale(1);
+}
+
+/* Form validation using CSS pseudo-classes */
+.form-group input:invalid {
+  border-color: var(--coral-red);
+}
+
+.form-group input:valid {
+  border-color: var(--primary-blue);
+}
+
+.form-group input:invalid + .error-message::before {
+  content: "Please fill out this field correctly";
+}
+
+/* Accordion functionality */
+.accordion-toggle:target + .accordion-content {
+  max-height: 200px;
+}
+
+.accordion-toggle:target .accordion-icon {
+  transform: rotate(180deg);
+}
+
+/* Share buttons animation */
+.share-container:hover .share-btn:nth-child(1) {
+  animation: shareButtonSlide 0.3s ease-out;
+}
+
+.share-container:hover .share-btn:nth-child(2) {
+  animation: shareButtonSlide 0.3s ease-out 0.1s;
+}
+
+.share-container:hover .share-btn:nth-child(3) {
+  animation: shareButtonSlide 0.3s ease-out 0.2s;
+}
+
+@keyframes shareButtonSlide {
+  from {
+    transform: translateY(20px) scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Scroll-triggered animations using CSS */
+@media (hover: hover) {
+  .grid-item {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.6s ease-out forwards;
+  }
+  
+  .grid-item:nth-child(1) { animation-delay: 0.1s; }
+  .grid-item:nth-child(2) { animation-delay: 0.2s; }
+  .grid-item:nth-child(3) { animation-delay: 0.3s; }
+  .grid-item:nth-child(4) { animation-delay: 0.4s; }
+  .grid-item:nth-child(5) { animation-delay: 0.5s; }
+  .grid-item:nth-child(6) { animation-delay: 0.6s; }
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Unlock progress simulation */
+.unlock-fill {
+  animation: unlockProgress 10s ease-out forwards;
+}
+
+@keyframes unlockProgress {
+  0% { transform: rotate(-90deg); }
+  100% { transform: rotate(180deg); }
+}
+
+/* When unlock reaches 100%, show the video */
+.unlock-section:hover .unlock-video {
+  display: block;
+  animation: revealVideo 0.8s ease-out;
+}
+
+@keyframes revealVideo {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Parallax effect on hero background */
+.hero-video-placeholder {
+  background-attachment: fixed;
+  background-image: 
+    linear-gradient(135deg, var(--primary-blue), var(--dark-blue)),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+  background-size: cover, 20px 20px;
+}
+
+/* Toast notification trigger */
+.contact-form:valid ~ .toast {
+  transform: translateX(0);
+}
+
+/* Loading states */
+.project-card img[src=""] {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  /* Shimmer animation disabled to prevent white overlay */
+  /* animation: shimmerLoading 1.5s infinite; */
+}
+
+@keyframes shimmerLoading {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Hover effects for better UX */
+.nav-logo:hover .logo-img {
+  animation: logoSpin 0.8s ease-in-out;
+}
+
+@keyframes logoSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Enhanced focus states for accessibility */
+.cta-button:focus,
+.filter-btn:focus,
+.nav-link:focus {
+  outline: 3px solid var(--vivid-gold);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(245, 197, 24, 0.2);
+}
+
+/* Print optimizations */
+@media print {
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  
+  .hero-section::after {
+    content: "BLUEPRINTS Media - blueprintsmedia.co.ke";
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12pt;
+    color: var(--charcoal-gray);
+  }
+}
+
+/* Enhanced mobile interactions */
+@media (max-width: 768px) {
+  /* Touch-friendly tap targets */
+  .nav-link,
+  .filter-btn,
+  .card-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Swipe indicators for carousel */
+  .carousel-container::after {
+    content: "← Swipe to explore →";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+  }
+  
+  /* Pull-to-refresh hint */
+  .featured-section::before {
+    content: "Pull down to refresh";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+  
+  body.refreshing .featured-section::before {
+    opacity: 1;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-container {
+    animation: none;
+  }
+  
+  .unlock-fill {
+    animation: none;
+    transform: rotate(180deg);
+  }
+  
+  * {
+    transition-duration: 0.1s;
+  }
+}
+
+/* High contrast adaptations */
+@media (prefers-contrast: high) {
+  .card-overlay,
+  .grid-overlay {
+    background: rgba(0, 0, 0, 0.9);
+  }
+  
+  .video-play-button {
+    border-width: 3px;
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Custom properties for dynamic theming */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: var(--charcoal-gray);
+    --bg-secondary: #2A2A2A;
+    --text-primary: var(--bright-white);
+    --text-secondary: #E0E0E0;
+    --border-color: #444444;
+  }
+}
+
+/* Performance optimizations */
+.project-card,
+.grid-item {
+  contain: layout style paint;
+  will-change: transform;
+}
+
+.carousel-container {
+  contain: layout;
+  will-change: transform;
+}
+
+/* Content loading states */
+.loading .project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  /* Content loading animation disabled to prevent white overlay */
+  /* animation: contentLoading 1.5s infinite; */
+}
+
+@keyframes contentLoading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* Micro-interactions for Gen Z appeal */
+.floating-contact {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.share-toggle {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(26, 144, 255, 0.7); }
+  50% { box-shadow: 0 0 0 20px rgba(26, 144, 255, 0); }
+}
+
+/* Success states */
+.form-group input:valid::after {
+  content: "✓";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-blue);
+  font-weight: bold;
+}
+
+/* Interactive reveal effects */
+.about-section:hover .about-image img {
+  filter: saturate(1.2) contrast(1.1);
+}
+
+.social-widget:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Enhanced grid animations */
+.masonry-grid:hover .grid-item:not(:hover) {
+  opacity: 0.7;
+  transform: scale(0.98);
+}
+
+/* Custom cursor effects */
+.project-card,
+.grid-item {
+  cursor: pointer;
+}
+
+.project-card:hover {
+  cursor: grab;
+}
+
+.project-card:active {
+  cursor: grabbing;
+}
+
+/* Scroll snap for mobile */
+@media (max-width: 768px) {
+  .carousel-container {
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+  
+  .project-card {
+    scroll-snap-align: center;
+    flex-shrink: 0;
+  }
+}
+
+/* Easter egg animation for logo */
+.nav-logo:active .logo-img {
+  animation: logoEasterEgg 0.5s ease-in-out;
+}
+
+@keyframes logoEasterEgg {
+  0%, 100% { filter: hue-rotate(0deg); }
+  25% { filter: hue-rotate(90deg) saturate(1.5); }
+  50% { filter: hue-rotate(180deg) saturate(2); }
+  75% { filter: hue-rotate(270deg) saturate(1.5); }
+}
+
+/* Final polish for professional look */
+.section-title {
+  background: linear-gradient(45deg, var(--primary-blue), var(--vivid-gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Ensure all interactive elements are accessible */
+button, 
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* Optimized for different screen orientations */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero-section {
+    height: 100vh;
+    padding: var(--spacing-md) 0;
+  }
+  
+  .hero-tagline {
+    font-size: 2rem;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 768px) {
+  .unlock-content {
+    flex-direction: column;
+  }
+  
+  .social-feed {
+    grid-template-columns: 1fr;
+  }
+}

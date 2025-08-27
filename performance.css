@@ -1,0 +1,228 @@
+/* BLUEPRINTS Media - Fast Loading Optimizations */
+
+/* Critical Image Preloading */
+body::before {
+  content: '';
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  background-image: 
+    url('logo.png'),
+    url('hero-portrait.jpg'),
+    url('portrait-dramatic.jpg'),
+    url('creative-session.jpg');
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Progressive Image Enhancement */
+.progressive-image {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+/* Only show shimmer for images that haven't loaded yet */
+.progressive-image.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 1.5s infinite;
+  z-index: 1;
+}
+
+.progressive-image img {
+  transition: opacity 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.progressive-image.loaded::before {
+  display: none;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); opacity: 0.3; }
+  50% { opacity: 0.1; }
+  100% { transform: translateX(200%); opacity: 0.3; }
+}
+
+/* Optimize Critical Rendering Path */
+.above-fold {
+  contain: layout style;
+}
+
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 400px;
+}
+
+/* Reduce Reflows */
+.hero-content,
+.nav-container,
+.project-card {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Image Aspect Ratios to Prevent Layout Shift */
+.project-card .card-image {
+  aspect-ratio: 4/3;
+  position: relative;
+}
+
+.project-card .card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grid-item {
+  aspect-ratio: 1/1;
+  position: relative;
+}
+
+.grid-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.social-post {
+  aspect-ratio: 1/1;
+  position: relative;
+}
+
+.social-post img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Video Optimization */
+.hero-video {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Font Loading Optimization */
+@font-face {
+  font-family: 'Montserrat';
+  font-display: swap;
+  src: local('Montserrat');
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-display: swap;
+  src: local('Lora');
+}
+
+/* Critical CSS for First Paint */
+.critical-above-fold {
+  /* Inline critical styles here */
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Defer Non-Critical Animations */
+@media (prefers-reduced-motion: no-preference) {
+  .enhanced-animation {
+    animation-play-state: running;
+  }
+}
+
+/* Network-Aware Loading */
+@media (prefers-reduced-data: reduce) {
+  .hero-video {
+    display: none;
+  }
+  
+  .hero-video-placeholder {
+    display: block;
+  }
+  
+  .video-preview {
+    display: none;
+  }
+  
+  .video-placeholder {
+    display: flex;
+  }
+}
+
+/* Optimize for Touch Devices */
+@media (hover: none) and (pointer: coarse) {
+  .project-card:hover .card-overlay,
+  .grid-item:hover .grid-overlay {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Memory Optimization */
+.out-of-viewport {
+  content-visibility: hidden;
+}
+
+/* GPU Acceleration for Smooth Scrolling */
+.smooth-scroll {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize Background Images */
+.hero-video-placeholder {
+  background-image: 
+    linear-gradient(135deg, var(--primary-blue), var(--dark-blue)),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+  background-size: cover, 20px 20px;
+  background-attachment: local;
+}
+
+/* Intersection Observer Loading States */
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced Focus for Performance */
+*:focus-visible {
+  outline: 2px solid var(--vivid-gold);
+  outline-offset: 2px;
+}
+
+/* Optimize Hover States */
+@media (hover: hover) {
+  .hover-optimize:hover {
+    transform: translateZ(0) scale(1.02);
+  }
+}
+
+/* Reduce Paint Complexity */
+.complex-element {
+  contain: paint layout;
+  isolation: isolate;
+}
